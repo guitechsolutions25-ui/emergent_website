@@ -124,6 +124,25 @@
     position: absolute;
     pointer-events: auto;
 }
+/*
+ * Crops into a zoomed-in, shifted window of the Spline scene without
+ * touching the scene itself (repositioning objects in Spline breaks
+ * State-based animation targets, which are relative to base position).
+ * --spline-zoom: how much larger than its container the scene renders
+ *   (1 = no zoom, 1.6 = 160% size i.e. zoomed in 1.6x).
+ * --spline-shift-x / --spline-shift-y: offset as a % of the container,
+ *   using  offset% = target% - centerFraction * zoom * 100
+ *   where target% is where you want the orb's center to land in the
+ *   visible area, and centerFraction is where it currently sits in the
+ *   unzoomed scene (0.5, 0.5 since it's centered in Spline now).
+ */
+.spline-hero-zoom {
+    position: absolute;
+    width: calc(var(--spline-zoom, 1.6) * 100%);
+    height: calc(var(--spline-zoom, 1.6) * 100%);
+    left: var(--spline-shift-x, -5%);
+    top: var(--spline-shift-y, -30%);
+}
 @media (max-width: 1023px) {
     .spline-hero {
         width: 900px;
@@ -137,7 +156,7 @@
 @media (min-width: 1024px) {
     .spline-hero {
         inset: 0;
-        clip-path: inset(0 0 0 54%);
+        clip-path: inset(0 0 0 56%);
     }
 }
 

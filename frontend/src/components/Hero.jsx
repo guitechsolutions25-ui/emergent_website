@@ -61,12 +61,14 @@ export default function Hero() {
             filter: "brightness(1.4) saturate(1.2)",
           }}
         >
-          <Suspense fallback={null}>
-            <Spline scene="https://prod.spline.design/G4NwmAwpjFy4Iuwx/scene.splinecode" />
-          </Suspense>
+          <div className="spline-hero-zoom">
+            <Suspense fallback={null}>
+              <Spline scene="https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode" />
+            </Suspense>
+          </div>
         </div>
       </motion.div>
-      <div className="pointer-events-none absolute inset-0 bg-ink/55 lg:bg-[linear-gradient(90deg,#0D0D0F_0%,rgba(13,13,15,0.92)_30%,rgba(13,13,15,0.35)_46%,transparent_56%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-ink/55 lg:bg-[linear-gradient(90deg,#0D0D0F_0%,rgba(13,13,15,0.92)_30%,rgba(13,13,15,0.5)_50%,transparent_64%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ink to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/80 to-transparent" />
 
