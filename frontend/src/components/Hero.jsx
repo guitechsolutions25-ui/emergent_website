@@ -62,7 +62,7 @@ export default function Hero() {
           }}
         >
           <Suspense fallback={null}>
-            <Spline scene="https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode" />
+            <Spline scene="https://prod.spline.design/G4NwmAwpjFy4Iuwx/scene.splinecode" />
           </Suspense>
         </div>
       </motion.div>
