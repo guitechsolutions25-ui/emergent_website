@@ -63,7 +63,7 @@ export default function Hero() {
         >
           <div className="spline-hero-zoom">
             <Suspense fallback={null}>
-              <Spline scene="https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode" />
+              <Spline scene="https://" />
             </Suspense>
           </div>
         </div>

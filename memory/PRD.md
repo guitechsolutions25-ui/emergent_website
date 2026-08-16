@@ -1,7 +1,7 @@
 # PRD — Kromera Landing Page
 
 ## Problema original
-Landing page premium e futurista para a Kromera, plataforma de atendimento e automação com IA para WhatsApp (assistente Luna). Frontend-only, React + Tailwind + Framer Motion + React Flow (@xyflow/react), dark (#0D0D0F / #17171A / teal #00D9A5), conteúdo 100% em pt-BR, dados mockados no frontend. Screenshots do produto real servem como referência visual para recriar interfaces interativas (inbox, campanhas, flow builder, integrações). Cena Spline do usuário no hero: https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode
+Landing page premium e futurista para a Kromera, plataforma de atendimento e automação com IA para WhatsApp (assistente Luna). Frontend-only, React + Tailwind + Framer Motion + React Flow (@xyflow/react), dark (#0D0D0F / #17171A / teal #00D9A5), conteúdo 100% em pt-BR, dados mockados no frontend. Screenshots do produto real servem como referência visual para recriar interfaces interativas (inbox, campanhas, flow builder, integrações). Cena Spline do usuário no hero: https://prod.spline.design/G4NwmAwpjFy4Iuwx/scene.splinecode
 
 ## Arquitetura
 - `/app/frontend/src/App.js` — composição das seções (sem backend)
