@@ -135,13 +135,23 @@
  *   where target% is where you want the orb's center to land in the
  *   visible area, and centerFraction is where it currently sits in the
  *   unzoomed scene (0.5, 0.5 since it's centered in Spline now).
+ *
+ * This is a `transform: scale()`, not a `width`/`height` blow-up: Spline
+ * sizes its WebGL canvas (and its render resolution) to match this div's
+ * *layout* box via ResizeObserver, which `transform` never touches. At
+ * the zoom levels this scene needs, inflating width/height instead makes
+ * the canvas render tens of millions of extra offscreen pixels every
+ * frame -- the main source of the hero's jank -- for a result that
+ * `transform` produces identically, since it just GPU-upscales the
+ * already-rendered frame.
  */
 .spline-hero-zoom {
     position: absolute;
-    width: calc(var(--spline-zoom, 5.76) * 100%);
-    height: calc(var(--spline-zoom, 5.76) * 100%);
-    left: var(--spline-shift-x, -213%);
-    top: var(--spline-shift-y, -238%);
+    inset: 0;
+    transform-origin: 0 0;
+    transform:
+        translate(var(--spline-shift-x, -213%), var(--spline-shift-y, -238%))
+        scale(var(--spline-zoom, 5.76));
 }
 @media (max-width: 1023px) {
     .spline-hero {

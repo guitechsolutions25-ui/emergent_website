@@ -1,4 +1,4 @@
-import { Suspense, lazy, useRef } from "react";
+import { Component, Suspense, lazy, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowDown, CalendarCheck, Wifi } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
@@ -6,6 +6,21 @@ import { scrollToSection } from "@/lib/scroll";
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
 const EASE = [0.16, 1, 0.3, 1];
+
+// react-spline throws during render when the scene fails to load (e.g. a
+// network hiccup or an ad/privacy blocker cutting off prod.spline.design).
+// Without this boundary that throw propagates past Suspense and unmounts
+// the entire app, not just the hero visual, so a purely decorative asset
+// can take the whole site down. Swallow it and render nothing instead.
+class SplineBoundary extends Component {
+  state = { failed: false };
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  render() {
+    return this.state.failed ? null : this.props.children;
+  }
+}
 
 function MaskedLine({ children, delay }) {
   return (
@@ -62,9 +77,11 @@ export default function Hero() {
           }}
         >
           <div className="spline-hero-zoom">
-            <Suspense fallback={null}>
-              <Spline scene="https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode" />
-            </Suspense>
+            <SplineBoundary>
+              <Suspense fallback={null}>
+                <Spline scene="https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode" />
+              </Suspense>
+            </SplineBoundary>
           </div>
         </div>
       </motion.div>
