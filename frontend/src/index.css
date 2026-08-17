@@ -128,30 +128,34 @@
  * Crops into a zoomed-in, shifted window of the Spline scene without
  * touching the scene itself (repositioning objects in Spline breaks
  * State-based animation targets, which are relative to base position).
- * --spline-zoom: how much larger than its container the scene renders
- *   (1 = no zoom, 1.6 = 160% size i.e. zoomed in 1.6x).
  * --spline-shift-x / --spline-shift-y: offset as a % of the container,
  *   using  offset% = target% - centerFraction * zoom * 100
  *   where target% is where you want the orb's center to land in the
  *   visible area, and centerFraction is where it currently sits in the
  *   unzoomed scene (0.5, 0.5 since it's centered in Spline now).
  *
- * This is a `transform: scale()`, not a `width`/`height` blow-up: Spline
- * sizes its WebGL canvas (and its render resolution) to match this div's
- * *layout* box via ResizeObserver, which `transform` never touches. At
- * the zoom levels this scene needs, inflating width/height instead makes
- * the canvas render tens of millions of extra offscreen pixels every
- * frame -- the main source of the hero's jank -- for a result that
- * `transform` produces identically, since it just GPU-upscales the
- * already-rendered frame.
+ * The zoom itself is split across two mechanisms instead of one:
+ * --spline-zoom-resolution (width/height) is real size, so Spline's
+ *   canvas -- which sizes itself to this div's *layout* box via
+ *   ResizeObserver -- actually renders at that resolution. Costs GPU
+ *   (render area grows with the square of this number), but stays sharp.
+ * --spline-zoom-display (`transform: scale`) is free GPU compositing on
+ *   top of that, but blurs the already-rendered frame if pushed too far.
+ * Combined zoom = resolution x display. Splitting it 2.4 x 2.4 (≈5.76
+ * total) keeps the canvas at ~5.76x container area -- vs. the ~33x it'd
+ * be if the full zoom were real resolution -- while keeping the
+ * compositor's upscale mild enough that Spline's dithered/particle
+ * shading doesn't turn blocky. Raise -resolution for a sharper (costlier)
+ * result, -display for a cheaper (blurrier) one.
  */
 .spline-hero-zoom {
     position: absolute;
-    inset: 0;
+    width: calc(var(--spline-zoom-resolution, 2.4) * 100%);
+    height: calc(var(--spline-zoom-resolution, 2.4) * 100%);
+    left: var(--spline-shift-x, -213%);
+    top: var(--spline-shift-y, -238%);
     transform-origin: 0 0;
-    transform:
-        translate(var(--spline-shift-x, -213%), var(--spline-shift-y, -238%))
-        scale(var(--spline-zoom, 5.76));
+    transform: scale(var(--spline-zoom-display, 2.4));
 }
 @media (max-width: 1023px) {
     .spline-hero {
