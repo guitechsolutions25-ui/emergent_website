@@ -25,7 +25,7 @@ applied="$(cat "$APPLIED" 2>/dev/null || printf '')"
 
 # Converged: nothing to do.
 [ "$current" = "$applied" ] && exit 0
-# No API URL baked (older pod) - can't reconcile; retry once one is present.
+# No API URL baked (older pod) — can't reconcile; retry once one is present.
 [ -n "$CRON_API_URL" ] || exit 0
 
 # Fire-and-forget preview reconcile; silent on any transport failure.

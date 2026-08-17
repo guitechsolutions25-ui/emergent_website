@@ -14,7 +14,7 @@ export default function Positioning() {
           <SectionHead
             chapter={["01", "Atender"]}
             title={<>Seu WhatsApp pode fazer <span className="text-teal">muito mais</span>.</>}
-            sub="A Luna não é um chatbot de respostas prontas. É uma camada de inteligência sobre o WhatsApp que atende, entende, age e organiza: Dentro de uma única plataforma."
+            sub="A Luna não é um chatbot de respostas prontas. É uma camada de inteligência sobre o WhatsApp que atende, entende, age, organiza e analisa — dentro de uma única plataforma."
           />
           <Reveal delay={0.2}>
             <div className="mt-10 hidden gap-6 lg:flex">

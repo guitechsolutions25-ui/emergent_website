@@ -238,7 +238,7 @@ export default function CampaignsDemo() {
               </div>
             </div>
             <p className="mt-4 flex items-center gap-2 font-mono text-[10px] text-steel/60">
-              <PencilLine className="h-3 w-3" /> Simulação com dados fictícios - nenhuma mensagem real é enviada.
+              <PencilLine className="h-3 w-3" /> Simulação com dados fictícios — nenhuma mensagem real é enviada.
             </p>
           </div>
         </div>

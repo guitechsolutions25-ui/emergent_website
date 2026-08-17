@@ -29,7 +29,7 @@ export default function Showcase() {
           align="center"
           chapter={["02", "A plataforma"]}
           title={<>Isto não é uma captura de tela.</>}
-          sub="Explore demonstrações interativas construídas com a mesma linguagem visual do produto real. Clique, selecione, navegue - essa será a sensação de usar a Kromera."
+          sub="Explore demonstrações interativas construídas com a mesma linguagem visual do produto real. Clique, selecione, navegue — é assim que usar a Kromera se sente."
         />
 
         <div className="mt-14 flex justify-center" data-testid="showcase-tabs">

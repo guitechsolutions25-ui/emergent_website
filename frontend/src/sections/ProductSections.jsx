@@ -37,7 +37,7 @@ export function SchedulingSection() {
           <SectionHead
             chapter={["05", "Agir"]}
             title={<>Agendamento que <span className="text-teal">se resolve sozinho</span>.</>}
-            sub="O cliente pede, a Luna consulta a agenda real, aplica suas regras e confirma - com lembrete automático e sincronização com o Google Calendar."
+            sub="O cliente pede, a Luna consulta a agenda real, aplica suas regras e confirma — com lembrete automático e sincronização com o Google Calendar."
           />
           <Reveal delay={0.2}>
             <div className="mt-8 flex flex-wrap gap-2">
@@ -163,7 +163,7 @@ export function CrmSection() {
             <SectionHead
               chapter={["06", "Organizar"]}
               title={<>Cada cliente em <span className="text-teal">um único lugar</span>.</>}
-              sub="Conversas, agendamentos, notas internas e atividade - o histórico completo do cliente, sempre a um clique."
+              sub="Conversas, agendamentos, notas internas e atividade — o histórico completo do cliente, sempre a um clique."
             />
             <Reveal delay={0.2}>
               <div className="mt-8 rounded-2xl border border-line bg-surface p-5" data-testid="crm-profile-card">
@@ -246,7 +246,7 @@ export function HandoffSection() {
       <SectionHead
         align="center"
         title={<>Quando é hora de um humano assumir, <span className="text-teal">Luna sabe</span>.</>}
-        sub="A IA não substitui sua equipe - ela prepara o caminho. O atendente recebe a conversa com resumo, contexto e histórico. Nunca do zero."
+        sub="A IA não substitui sua equipe — ela prepara o caminho. O atendente recebe a conversa com resumo, contexto e histórico. Nunca do zero."
       />
 
       <Reveal delay={0.15}>
@@ -284,7 +284,7 @@ export function HandoffSection() {
               <div className="flex justify-end">
                 <div className="max-w-[85%] rounded-2xl rounded-br-sm border border-amber-400/25 bg-amber-400/10 px-4 py-3 text-sm text-white/90">
                   <p className="mb-1 font-mono text-[10px] text-amber-300">Rafael</p>
-                  Oi João, a Luna me passou o contexto. Vamos revisar seu contrato - segue a minuta atualizada.
+                  Oi João, a Luna me passou o contexto. Vamos revisar seu contrato — segue a minuta atualizada.
                   <span className="mt-2 flex items-center gap-2 rounded-lg border border-white/10 bg-ink/50 px-3 py-2 font-mono text-[10px] text-white/70">
                     <FileText className="h-3.5 w-3.5 text-teal" /> minuta-contrato-v3.pdf
                   </span>

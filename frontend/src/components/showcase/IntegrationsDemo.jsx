@@ -79,7 +79,7 @@ export default function IntegrationsDemo() {
           );
         })}
       </div>
-      <p className="mt-5 text-center text-xs text-steel/70">A Kromera se conecta aos sistemas que a sua empresa já usa - sem troca de ferramentas.</p>
+      <p className="mt-5 text-center text-xs text-steel/70">A Kromera se conecta aos sistemas que a sua empresa já usa — sem troca de ferramentas.</p>
     </div>
   );
 }
