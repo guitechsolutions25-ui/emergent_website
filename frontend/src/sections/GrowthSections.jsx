@@ -88,7 +88,7 @@ export function MarketingSection() {
 
         <Reveal delay={0.25}>
           <div className="mt-8 grid grid-cols-3 gap-3 text-center" data-testid="marketing-metrics">
-            {[["128", "enviadas"], ["121", "entregues"], ["94", "lidas"]].map(([v, l]) => (
+            {[["128", "enviadas"], ["121", "entregues"]].map(([v, l]) => (
               <div key={l} className="rounded-2xl border border-line bg-surface px-4 py-5">
                 <Counter to={Number(v)} className="font-display text-3xl font-extrabold text-teal" />
                 <p className="mt-1 text-xs text-steel">{l} · última campanha</p>
