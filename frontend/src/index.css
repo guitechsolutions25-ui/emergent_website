@@ -112,6 +112,18 @@
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
     }
+    /*
+     * The nav's .glass header is fixed and blurred for most of a scroll
+     * session, forcing a backdrop resample on every frame the page
+     * moves. Cheaper blur radius on mobile, where that cost is most
+     * noticeable and GPU headroom is smallest.
+     */
+    @media (max-width: 1023px) {
+        .glass {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    }
     .text-glow {
         text-shadow: 0 0 40px rgba(0, 217, 165, 0.35);
     }
@@ -149,6 +161,22 @@
         top: 44%;
         transform: translate(-684px, -50%);
         opacity: 0.55;
+        /*
+         * Notches out the bottom-right corner, where Spline's free-tier
+         * "Built with Spline" watermark renders on this scene, the same
+         * way the desktop clip-path incidentally crops it out of its
+         * own (left-side) visible strip. Tune --spline-mobile-notch-w/h
+         * (% of this box) if the badge still peeks out or too much of
+         * the orb gets cropped.
+         */
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% calc(100% - var(--spline-mobile-notch-h, 14%)),
+            calc(100% - var(--spline-mobile-notch-w, 26%)) calc(100% - var(--spline-mobile-notch-h, 14%)),
+            calc(100% - var(--spline-mobile-notch-w, 26%)) 100%,
+            0 100%
+        );
     }
 }
 @media (min-width: 1024px) {
@@ -157,10 +185,10 @@
         clip-path: inset(0 0 0 56%);
     }
     .spline-hero-zoom {
-        width: calc(var(--spline-zoom, 1.6) * 100%);
-        height: calc(var(--spline-zoom, 1.6) * 100%);
-        left: var(--spline-shift-x, -5%);
-        top: var(--spline-shift-y, -30%);
+        width: calc(var(--spline-zoom, 2.4) * 100%);
+        height: calc(var(--spline-zoom, 2.4) * 100%);
+        left: var(--spline-shift-x, -42%);
+        top: var(--spline-shift-y, -70%);
     }
 }
 
