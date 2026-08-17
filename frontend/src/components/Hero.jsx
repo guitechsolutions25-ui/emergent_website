@@ -1,4 +1,4 @@
-import { Suspense, lazy, useRef, useEffect } from "react";
+import { Suspense, lazy, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowDown, CalendarCheck, Wifi } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
@@ -50,27 +50,6 @@ export default function Hero() {
   const orbY = useTransform(scrollYProgress, [0, 1], [0, -90]);
   const orbOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.15]);
 
-  const splineAppRef = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    // Pause/resume the Spline render loop via its own stop()/play() API
-    // instead of unmounting the component: the scene stays mounted the
-    // whole time, so this can't retrigger Auto Zoom's fit calculation or
-    // the Start-event state transition the way unmounting did.
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const app = splineAppRef.current;
-        if (!app) return;
-        if (entry.isIntersecting) app.play();
-        else app.stop();
-      },
-      { rootMargin: "200px 0px" },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="inicio" ref={ref} className="relative flex min-h-screen items-center overflow-hidden" data-testid="hero-section">
       <motion.div style={{ y: orbY, opacity: orbOpacity }} className="absolute inset-0 z-[5]">
@@ -84,10 +63,7 @@ export default function Hero() {
         >
           <div className="spline-hero-zoom">
             <Suspense fallback={null}>
-              <Spline
-                scene="https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode"
-                onLoad={(app) => { splineAppRef.current = app; }}
-              />
+              <Spline scene="https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode" />
             </Suspense>
           </div>
         </div>
