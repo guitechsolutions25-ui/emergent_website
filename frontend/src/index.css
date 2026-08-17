@@ -141,10 +141,11 @@
  *   (render area grows with the square of this number), but stays sharp.
  * --spline-zoom-display (`transform: scale`) is free GPU compositing on
  *   top of that, but blurs the already-rendered frame if pushed too far.
- * Combined zoom = resolution x display. Splitting it 5 x 2.12 (=10.6
- * total) keeps the canvas at 25x container area -- still under the ~33x
- * the original bug rendered at -- while the compositor only has to
- * upscale by 2.12x. Raise -resolution for a sharper (costlier) result,
+ * Combined zoom = resolution x display. Splitting it 4 x 1.44 (=5.76
+ * total) keeps the canvas at 16x container area -- about half the ~33x
+ * it'd be if the full zoom were real resolution -- while the compositor
+ * only has to upscale by 1.44x, mild enough that it shouldn't read as
+ * blur at all. Raise -resolution for a sharper (costlier) result,
  * -display for a cheaper (blurrier) one. Note the orb itself is built
  * from a cluster of small discrete spheres (see the scene in Spline), so
  * some graininess at this size is the artwork, not a rendering artifact
@@ -152,12 +153,12 @@
  */
 .spline-hero-zoom {
     position: absolute;
-    width: calc(var(--spline-zoom-resolution, 5) * 100%);
-    height: calc(var(--spline-zoom-resolution, 5) * 100%);
-    left: var(--spline-shift-x, -452%);
-    top: var(--spline-shift-y, -485%);
+    width: calc(var(--spline-zoom-resolution, 4) * 100%);
+    height: calc(var(--spline-zoom-resolution, 4) * 100%);
+    left: var(--spline-shift-x, -213%);
+    top: var(--spline-shift-y, -238%);
     transform-origin: 0 0;
-    transform: scale(var(--spline-zoom-display, 2.12));
+    transform: scale(var(--spline-zoom-display, 1.44));
 }
 @media (max-width: 1023px) {
     .spline-hero {
