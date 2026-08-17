@@ -1,4 +1,4 @@
-import { Suspense, lazy, useRef } from "react";
+import { Suspense, lazy, useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowDown, CalendarCheck, Wifi } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
@@ -50,6 +50,22 @@ export default function Hero() {
   const orbY = useTransform(scrollYProgress, [0, 1], [0, -90]);
   const orbOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.15]);
 
+  const [isOrbNearViewport, setIsOrbNearViewport] = useState(true);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // The Spline scene is a live WebGL render loop that never stops on
+    // its own. Unmount it once the hero is well out of view so it isn't
+    // still rendering every frame while the visitor reads the rest of
+    // the page, and remount it as the hero comes back into range.
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsOrbNearViewport(entry.isIntersecting),
+      { rootMargin: "200px 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="inicio" ref={ref} className="relative flex min-h-screen items-center overflow-hidden" data-testid="hero-section">
       <motion.div style={{ y: orbY, opacity: orbOpacity }} className="absolute inset-0 z-[5]">
@@ -62,9 +78,11 @@ export default function Hero() {
           }}
         >
           <div className="spline-hero-zoom">
-            <Suspense fallback={null}>
-              <Spline scene="https://prod.spline.design/G4NwmAwpjFy4Iuwx/scene.splinecode" />
-            </Suspense>
+            {isOrbNearViewport && (
+              <Suspense fallback={null}>
+                <Spline scene="https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode" />
+              </Suspense>
+            )}
           </div>
         </div>
       </motion.div>
@@ -130,7 +148,7 @@ export default function Hero() {
           className="mt-7 max-w-xl text-base leading-relaxed text-steel md:text-lg"
           data-testid="hero-subheadline"
         >
-          Muito além de um assistente virtual - uma plataforma completa para automatizar e potencializar a comunicação com seus clientes pelo WhatsApp.
+          Muito além de um assistente virtual — uma plataforma completa para automatizar e potencializar a comunicação com seus clientes pelo WhatsApp.
         </motion.p>
 
         <motion.div
@@ -165,9 +183,9 @@ export default function Hero() {
           className="mt-14 flex flex-wrap gap-x-10 gap-y-4 font-mono text-[11px] uppercase tracking-[0.18em] text-steel"
           data-testid="hero-stats"
         >
-          <span><span className="text-teal">100%</span> resolução autônoma</span>
+          <span><span className="text-teal">78%</span> resolução autônoma</span>
           <span><span className="text-teal">24/7</span> atendimento contínuo</span>
-          <span><span className="text-teal">4s</span> resposta média</span>
+          <span><span className="text-teal">1,2s</span> resposta média</span>
         </motion.div>
       </motion.div>
 

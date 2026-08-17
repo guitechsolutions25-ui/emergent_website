@@ -112,6 +112,18 @@
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
     }
+    /*
+     * The nav's .glass header is fixed and blurred for most of a scroll
+     * session, forcing a backdrop resample on every frame the page
+     * moves. Cheaper blur radius on mobile, where that cost is most
+     * noticeable and GPU headroom is smallest.
+     */
+    @media (max-width: 1023px) {
+        .glass {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    }
     .text-glow {
         text-shadow: 0 0 40px rgba(0, 217, 165, 0.35);
     }
