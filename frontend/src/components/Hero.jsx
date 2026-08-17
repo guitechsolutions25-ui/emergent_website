@@ -58,12 +58,27 @@ export default function Hero() {
     // its own. Unmount it once the hero is well out of view so it isn't
     // still rendering every frame while the visitor reads the rest of
     // the page, and remount it as the hero comes back into range.
+    // Unmounting resets the scene's own Start-triggered state transition,
+    // so a momentary flicker (e.g. layout shift during initial load) must
+    // not tear it down: only commit to "not visible" after that reading
+    // holds for a bit, while becoming visible again takes effect instantly.
+    let hideTimer = null;
     const observer = new IntersectionObserver(
-      ([entry]) => setIsOrbNearViewport(entry.isIntersecting),
+      ([entry]) => {
+        clearTimeout(hideTimer);
+        if (entry.isIntersecting) {
+          setIsOrbNearViewport(true);
+        } else {
+          hideTimer = setTimeout(() => setIsOrbNearViewport(false), 600);
+        }
+      },
       { rootMargin: "200px 0px" },
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(hideTimer);
+      observer.disconnect();
+    };
   }, []);
 
   return (
