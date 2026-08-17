@@ -149,6 +149,22 @@
         top: 44%;
         transform: translate(-684px, -50%);
         opacity: 0.55;
+        /*
+         * Notches out the bottom-right corner, where Spline's free-tier
+         * "Built with Spline" watermark renders on this scene, the same
+         * way the desktop clip-path incidentally crops it out of its
+         * own (left-side) visible strip. Tune --spline-mobile-notch-w/h
+         * (% of this box) if the badge still peeks out or too much of
+         * the orb gets cropped.
+         */
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% calc(100% - var(--spline-mobile-notch-h, 14%)),
+            calc(100% - var(--spline-mobile-notch-w, 26%)) calc(100% - var(--spline-mobile-notch-h, 14%)),
+            calc(100% - var(--spline-mobile-notch-w, 26%)) 100%,
+            0 100%
+        );
     }
 }
 @media (min-width: 1024px) {

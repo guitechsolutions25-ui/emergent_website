@@ -12,6 +12,11 @@ import { PricingSection, FinalCta, Footer } from "@/sections/Closing";
 
 export default function App() {
   useEffect(() => {
+    // Touch devices get native scrolling instead: Lenis re-implements
+    // scroll on the main thread via rAF, which competes with everything
+    // else for frame budget on mobile hardware. Native touch scroll is
+    // already GPU-composited and smooth without it.
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const lenis = new Lenis({ autoRaf: true, lerp: 0.09 });
     window.__lenis = lenis;
     return () => {
