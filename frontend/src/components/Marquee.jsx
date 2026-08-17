@@ -3,7 +3,7 @@ const items = [
   "Automação",
   "Agendamento",
   "Base de conhecimento",
-  "CRM",
+  "CRM 360",
   "Marketing",
   "Analytics",
   "Agente autônomo",
