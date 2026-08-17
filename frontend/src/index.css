@@ -138,10 +138,10 @@
  */
 .spline-hero-zoom {
     position: absolute;
-    width: calc(var(--spline-zoom, 1.6) * 100%);
-    height: calc(var(--spline-zoom, 1.6) * 100%);
-    left: var(--spline-shift-x, -5%);
-    top: var(--spline-shift-y, -30%);
+    width: calc(var(--spline-zoom, 5.76) * 100%);
+    height: calc(var(--spline-zoom, 5.76) * 100%);
+    left: var(--spline-shift-x, -213%);
+    top: var(--spline-shift-y, -238%);
 }
 @media (max-width: 1023px) {
     .spline-hero {
