@@ -178,6 +178,20 @@
             0 100%
         );
     }
+    /*
+     * Same Auto Zoom compensation as the desktop version (see the
+     * min-width:1024px block below): Spline's Responsive+Auto Zoom
+     * framing fits the scene smaller than it used to, and mobile never
+     * had a compensating multiplier before because it didn't need one.
+     * Guessed starting values -- tune if the orb is still too
+     * small/off-center, or too cropped against the notch above.
+     */
+    .spline-hero-zoom {
+        width: calc(var(--spline-mobile-zoom, 3.5) * 100%);
+        height: calc(var(--spline-mobile-zoom, 3.5) * 100%);
+        left: var(--spline-mobile-shift-x, -125%);
+        top: var(--spline-mobile-shift-y, -125%);
+    }
 }
 @media (min-width: 1024px) {
     .spline-hero {
@@ -185,10 +199,10 @@
         clip-path: inset(0 0 0 56%);
     }
     .spline-hero-zoom {
-        width: calc(var(--spline-zoom, 2.4) * 100%);
-        height: calc(var(--spline-zoom, 2.4) * 100%);
-        left: var(--spline-shift-x, -42%);
-        top: var(--spline-shift-y, -70%);
+        width: calc(var(--spline-zoom, 4.5) * 100%);
+        height: calc(var(--spline-zoom, 4.5) * 100%);
+        left: var(--spline-shift-x, -147%);
+        top: var(--spline-shift-y, -175%);
     }
 }
 
