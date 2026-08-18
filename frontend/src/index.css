@@ -156,33 +156,16 @@
  */
 .spline-hero-zoom {
     position: absolute;
-    width: calc(var(--spline-zoom-resolution, 5) );
-    height: calc(var(--spline-zoom-resolution, 5) );
+    width: calc(var(--spline-zoom-resolution, 5) * 100%);
+    height: calc(var(--spline-zoom-resolution, 5) * 100%);
     left: var(--spline-shift-x, -213%);
     top: var(--spline-shift-y, -238%);
     transform-origin: 0 0;
     transform: scale(var(--spline-zoom-display, 1.152));
 }
-@media (max-width: 1023px) {
-    .spline-hero {
-        width: 900px;
-        height: 520px;
-        left: 50%;
-        top: 44%;
-        transform: translate(-684px, -50%);
-        opacity: 0.55;
-        /* Unlike desktop, this box isn't clip-path-cropped to a sub-region
-         * of a larger surface -- it IS the whole visible surface, so the
-         * orb's target center is this box's center (50%), not desktop's
-         * 75%-of-full-section target. Per the centering formula above
-         * (offset% = target% - 0.5 * totalZoom * 100) with the same
-         * 5 * 1.152 = 5.76 total zoom, that's -238%, not desktop's -213%. */
-        --spline-shift-x: -238%;
-        /* Decorative background element: it shouldn't intercept touch
-         * gestures meant for scrolling the page. */
-        pointer-events: none;
-    }
-}
+/* No mobile breakpoint here: Hero.jsx doesn't mount .spline-hero at all
+ * below 1024px (the orb is desktop-only -- not worth the load/render
+ * cost on mobile), so there's nothing to size for that range. */
 @media (min-width: 1024px) {
     .spline-hero {
         inset: 0;
