@@ -69,18 +69,16 @@ export default function Hero() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // Mobile only: the orb is a live WebGL render loop with no reason to
-    // keep running once scrolled out of view. Pause/resume it via Spline's
-    // own play()/stop() API rather than unmounting -- unmounting would
-    // retrigger Auto Zoom's fit calculation and the Start-event state
-    // transition, which previously caused the orb to reset/reframe each
-    // time it scrolled back in. Desktop is left alone; it isn't the
-    // battery/thermal-constrained case this is aimed at.
-    const isMobile = () => window.matchMedia("(max-width: 1023px)").matches;
+    // The orb is a live WebGL render loop with no reason to keep running
+    // once scrolled out of view, on any screen size. Pause/resume it via
+    // Spline's own play()/stop() API rather than unmounting -- unmounting
+    // would retrigger Auto Zoom's fit calculation and the Start-event
+    // state transition, which previously caused the orb to reset/reframe
+    // each time it scrolled back in.
     const observer = new IntersectionObserver(
       ([entry]) => {
         const app = splineAppRef.current;
-        if (!app || !isMobile()) return;
+        if (!app) return;
         if (entry.isIntersecting) app.play();
         else app.stop();
       },

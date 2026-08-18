@@ -171,6 +171,16 @@
         top: 44%;
         transform: translate(-684px, -50%);
         opacity: 0.55;
+        /* Unlike desktop, this box isn't clip-path-cropped to a sub-region
+         * of a larger surface -- it IS the whole visible surface, so the
+         * orb's target center is this box's center (50%), not desktop's
+         * 75%-of-full-section target. Per the centering formula above
+         * (offset% = target% - 0.5 * totalZoom * 100) with the same
+         * 5 * 1.152 = 5.76 total zoom, that's -238%, not desktop's -213%. */
+        --spline-shift-x: -238%;
+        /* Decorative background element: it shouldn't intercept touch
+         * gestures meant for scrolling the page. */
+        pointer-events: none;
     }
 }
 @media (min-width: 1024px) {
