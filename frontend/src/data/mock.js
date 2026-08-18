@@ -12,7 +12,7 @@ export const conversations = [
     lastActive: "hoje, 09:14",
     messages: [
       { from: "customer", text: "Oi! Quero marcar uma consulta para sexta de manhã, se tiver horário.", time: "09:12" },
-      { from: "luna", text: "Olá, Marina! Claro — consultei a agenda de sexta-feira e estes horários estão livres:", time: "09:12", buttons: ["08:30", "09:00", "10:30"] },
+      { from: "luna", text: "Olá, Marina! Claro - consultei a agenda de sexta-feira e estes horários estão livres:", time: "09:12", buttons: ["08:30", "09:00", "10:30"] },
       { from: "customer", text: "09:00", time: "09:13" },
       { from: "luna", text: "Consulta confirmada ✓ Sexta-feira, 25/07 às 09:00 com Dra. Helena. Vou te enviar um lembrete automático um dia antes. Posso ajudar com mais alguma coisa?", time: "09:13" },
       { from: "customer", text: "Não, era isso. Obrigada!", time: "09:14" },
@@ -31,10 +31,10 @@ export const conversations = [
     lastActive: "hoje, 14:03",
     messages: [
       { from: "customer", text: "Gostaria de remarcar meu horário para amanhã", time: "13:58" },
-      { from: "luna", text: "Claro! Consultei a agenda — amanhã temos 14:00 e 16:30 disponíveis. Qual prefere?", time: "13:58", buttons: ["14:00", "16:30"] },
+      { from: "luna", text: "Claro! Consultei a agenda - amanhã temos 14:00 e 16:30 disponíveis. Qual prefere?", time: "13:58", buttons: ["14:00", "16:30"] },
       { from: "customer", text: "Na verdade, antes disso preciso falar sobre o contrato", time: "14:01" },
       { from: "system", text: "Luna escalonou a conversa · regra: assunto comercial", time: "14:02" },
-      { from: "agent", agentName: "Rafael", text: "Oi João, aqui é o Rafael. A Luna me passou todo o contexto — vamos revisar seu contrato agora.", time: "14:03" },
+      { from: "agent", agentName: "Rafael", text: "Oi João, aqui é o Rafael. A Luna me passou todo o contexto - vamos revisar seu contrato agora.", time: "14:03" },
     ],
   },
   {
@@ -96,7 +96,7 @@ export const audiences = [
 ];
 
 export const campaigns = [
-  { id: "c1", name: "Inverno 2026 — Base VIP", template: "Promoção de Inverno", audience: "Clientes VIP", status: "Enviada", sent: 128, delivered: 121, read: 94 },
+  { id: "c1", name: "Inverno 2026 - Base VIP", template: "Promoção de Inverno", audience: "Clientes VIP", status: "Enviada", sent: 128, delivered: 121, read: 94 },
   { id: "c2", name: "Reengajamento 30 dias", template: "Pesquisa de Satisfação", audience: "Inativos há 30 dias", status: "Agendada", when: "28/07 às 09:00" },
   { id: "c3", name: "Lançamento nova coleção", template: "Promoção de Inverno", audience: "Todos com opt-in", status: "Rascunho" },
 ];
@@ -179,24 +179,24 @@ export const flowEdges = [
 ];
 
 export const capabilities = [
-  { title: "Responde clientes 24/7", desc: "Atendimento imediato a qualquer hora — fins de semana e feriados inclusos. Sem fila, sem espera, sem mensagem ignorada." },
-  { title: "Entende a base de conhecimento", desc: "Respostas fundamentadas nos documentos, no site e nos arquivos da sua empresa via RAG — não em achismo." },
+  { title: "Responde clientes 24/7", desc: "Atendimento imediato a qualquer hora - fins de semana e feriados inclusos. Sem fila, sem espera, sem mensagem ignorada." },
+  { title: "Entende a base de conhecimento", desc: "Respostas fundamentadas nos documentos, no site e nos arquivos da sua empresa via RAG - não em achismo." },
   { title: "Agenda, remarca e cancela", desc: "Consulta a agenda real, aplica regras de disponibilidade e horário comercial, e confirma tudo sozinha." },
   { title: "Entende áudio, imagem e documentos", desc: "Transcreve áudios com Whisper, interpreta imagens com visão computacional e lê PDFs enviados pelo cliente." },
   { title: "Escala para humanos", desc: "Quando o assunto pede gente, transfere para a equipe com resumo e contexto completo da conversa." },
   { title: "Envia arquivos e mídia", desc: "Catálogos, PDFs, vídeos e imagens entregues diretamente na conversa, no momento certo." },
   { title: "Executa campanhas", desc: "Templates oficiais da Meta, gestão de opt-in, envio em massa e campanhas agendadas com log de entrega." },
-  { title: "Mantém histórico do cliente", desc: "Conversas, agendamentos, notas internas e atividade em um perfil único — o cliente 360." },
+  { title: "Mantém histórico do cliente", desc: "Conversas, agendamentos, notas internas e atividade em um perfil único - o cliente 360." },
   { title: "Analisa conversas", desc: "Métricas de atendimento, tópicos recorrentes analisados por IA e resumos automáticos." },
   { title: "Age com ferramentas de IA", desc: "Decide sozinha quando buscar, agendar, enviar ou escalonar. É um agente autônomo, não um script." },
 ];
 
 export const timelineEvents = [
   { type: "conversa", title: "Conversa com a Luna", date: "25/07 · 09:12", detail: "Agendamento solicitado e confirmado automaticamente para sexta-feira às 09:00 com Dra. Helena." },
-  { type: "agendamento", title: "Consulta — Dra. Helena", date: "25/07 · 09:00", detail: "Status: confirmada. Lembrete automático programado para 24/07 às 09:00 via WhatsApp." },
-  { type: "nota", title: "Nota interna — Rafael", date: "18/07 · 15:40", detail: "Cliente prefere horários pela manhã. Oferecer condições do plano anual na próxima interação." },
+  { type: "agendamento", title: "Consulta - Dra. Helena", date: "25/07 · 09:00", detail: "Status: confirmada. Lembrete automático programado para 24/07 às 09:00 via WhatsApp." },
+  { type: "nota", title: "Nota interna - Rafael", date: "18/07 · 15:40", detail: "Cliente prefere horários pela manhã. Oferecer condições do plano anual na próxima interação." },
   { type: "conversa", title: "Conversa com atendente", date: "10/07 · 14:22", detail: "Dúvida sobre faturamento resolvida pelo time humano após escalonamento da Luna com resumo." },
-  { type: "agendamento", title: "Retorno — avaliação", date: "02/07 · 10:30", detail: "Realizado. Cliente avaliou o atendimento com nota máxima na pesquisa automática." },
+  { type: "agendamento", title: "Retorno - avaliação", date: "02/07 · 10:30", detail: "Realizado. Cliente avaliou o atendimento com nota máxima na pesquisa automática." },
 ];
 
 export const agentSteps = [
@@ -220,10 +220,10 @@ export const agentTools = [
 export const marketingSteps = [
   { label: "Criar template", desc: "Monte a mensagem com cabeçalho de texto, imagem, vídeo ou documento." },
   { label: "Aprovação Meta", desc: "O template segue as regras oficiais do WhatsApp e é aprovado pela Meta." },
-  { label: "Selecionar opt-ins", desc: "Apenas clientes que consentiram recebem — sua conta protegida." },
+  { label: "Selecionar opt-ins", desc: "Apenas clientes que consentiram recebem - sua conta protegida." },
   { label: "Agendar", desc: "Escolha data e hora ou dispare imediatamente." },
   { label: "Enviar", desc: "Envio em massa com controle de velocidade e retentativas." },
-  { label: "Acompanhar", desc: "Enviadas, entregues e lidas em tempo real, com log completo." },
+  { label: "Acompanhar", desc: "Enviadas e entregues em tempo real, com log completo." },
 ];
 
 export const plans = [
@@ -232,7 +232,7 @@ export const plans = [
     price: "R$ 195",
     period: "/mês",
     desc: "Automação para começar a escalar o atendimento.",
-    features: ["Luna com fluxos visuais", "1 número de WhatsApp", "Agendamento automático", "Base de conhecimento (PDF/TXT)", "Até 1.000 conversas/mês"],
+    features: ["Assistente respondendo os seus clientes com o conhecimento do seu negócio, 24 horas por dia", "Entende imagens, áudios e arquivos","Atendimento humano quando necessário"],
     highlight: false,
   },
   {
@@ -240,15 +240,15 @@ export const plans = [
     price: "R$ 350",
     period: "/mês",
     desc: "Inteligência e gestão para operações em crescimento.",
-    features: ["Tudo do Start", "IA/RAG com Drive e website", "Entende áudio e imagem", "CRM 360 e notas internas", "Campanhas e opt-in", "Relatórios e análise de tópicos"],
+    features: ["Módulo de marketing com envio de mensagens personalizadas", "Entenda a sua demanda com relatórios em tempo real", "CRM com histórico de interações de clientes","Gestão automatizada de agendamento através do Google Agenda"],
     highlight: true,
   },
   {
     name: "Enterprise",
-    price: "R$ 599,90",
+    price: "R$ 520",
     period: "/mês",
     desc: "Experiência conversacional premium em escala.",
-    features: ["Tudo do Silver", "Agente autônomo com ferramentas", "Múltiplos atendentes e equipes", "Integrações avançadas", "Análise semanal por IA", "Suporte prioritário dedicado"],
+    features: ["Atendimento sem menus", "Experiência natual do início ao fim"],
     highlight: false,
   },
 ];
@@ -259,8 +259,8 @@ export const tourItems = [
   { id: "marketing", label: "Marketing", desc: "Templates oficiais, campanhas em massa e agendadas, sempre com opt-in.", stat: "94%", statLabel: "taxa de leitura média" },
   { id: "relatorios", label: "Relatórios", desc: "Volume, horários de pico, engajamento e análise de tópicos por IA.", stat: "30 dias", statLabel: "de visão consolidada" },
   { id: "integracoes", label: "Integrações", desc: "WhatsApp Cloud API, Google Calendar e Google Drive conectados nativamente.", stat: "3+", statLabel: "sistemas conectados" },
-  { id: "performance", label: "Performance", desc: "Latência de resposta, custo de IA e saúde operacional da plataforma.", stat: "1,2s", statLabel: "resposta média da Luna" },
-  { id: "kpis", label: "KPIs", desc: "Resolução pelo bot, escalonamento e recorrência em um painel executivo.", stat: "78%", statLabel: "resolução autônoma" },
+  { id: "performance", label: "Performance", desc: "Latência de resposta, custo de IA e saúde operacional da plataforma.", stat: "4s", statLabel: "resposta média da Luna" },
+  { id: "kpis", label: "KPIs", desc: "Resolução pelo bot, escalonamento e recorrência em um painel executivo.", stat: "100%", statLabel: "resolução autônoma" },
   { id: "features", label: "Features", desc: "Ative capacidades por plano e controle o que a Luna pode fazer.", stat: "12", statLabel: "capacidades modulares" },
   { id: "flow", label: "Flow Config", desc: "Construtor visual de fluxos: mensagens, menus, IA, agendamento e escalonamento.", stat: "9 tipos", statLabel: "de nós disponíveis" },
 ];

@@ -154,7 +154,7 @@ export default function AnalyticsDemo({ compact = false }) {
           </div>
           {analyzed ? (
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-4 space-y-2.5 text-xs leading-relaxed text-steel" data-testid="ai-analysis-result">
-              <p><span className="text-teal">▸</span> Agendamentos cresceram 22% esta semana — considere abrir mais horários na sexta de manhã.</p>
+              <p><span className="text-teal">▸</span> Agendamentos cresceram 22% esta semana - considere abrir mais horários na sexta de manhã.</p>
               <p><span className="text-teal">▸</span> 18% das dúvidas sobre preços foram escalonadas. Atualizar o documento de planos pode reduzir o handoff.</p>
               <p><span className="text-teal">▸</span> Pico de volume às 16h. A Luna resolveu 81% sem intervenção humana nesse horário.</p>
               <p className="border-t border-line pt-3 font-mono text-[10px] text-steel/60">19 mensagens analisadas · última análise 25/07/2026</p>
@@ -178,7 +178,7 @@ export default function AnalyticsDemo({ compact = false }) {
       </div>
 
       <div className="mt-4 flex flex-wrap gap-x-8 gap-y-2 rounded-2xl border border-line bg-surface2/40 px-5 py-4 font-mono text-[10px] text-steel">
-        <span>Latência média da Luna: <span className="text-teal">1,2s</span></span>
+        <span>Latência média da Luna: <span className="text-teal">4s</span></span>
         <span>Custo de IA no período: <span className="text-white">R$ 84,30</span></span>
         <span>Resumo automático: <span className="text-teal">ativo</span></span>
       </div>

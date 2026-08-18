@@ -193,7 +193,7 @@ export default function Hero() {
           className="mt-7 max-w-xl text-base leading-relaxed text-steel md:text-lg"
           data-testid="hero-subheadline"
         >
-          Muito além de um assistente virtual — uma plataforma completa para automatizar e potencializar a comunicação com seus clientes pelo WhatsApp.
+          Muito além de um assistente virtual - uma plataforma completa para automatizar e potencializar a comunicação com seus clientes pelo WhatsApp.
         </motion.p>
 
         <motion.div
@@ -228,9 +228,9 @@ export default function Hero() {
           className="mt-14 flex flex-wrap gap-x-10 gap-y-4 font-mono text-[11px] uppercase tracking-[0.18em] text-steel"
           data-testid="hero-stats"
         >
-          <span><span className="text-teal">78%</span> resolução autônoma</span>
+          <span><span className="text-teal">100%</span> resolução autônoma</span>
           <span><span className="text-teal">24/7</span> atendimento contínuo</span>
-          <span><span className="text-teal">1,2s</span> resposta média</span>
+          <span><span className="text-teal">4s</span> resposta média</span>
         </motion.div>
       </motion.div>
 

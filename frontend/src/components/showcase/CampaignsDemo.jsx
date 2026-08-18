@@ -142,7 +142,6 @@ export default function CampaignsDemo() {
                   <div className="flex gap-4 font-mono text-[10px] text-steel">
                     <span><span className="text-white">{c.sent}</span> enviadas</span>
                     <span><span className="text-teal">{c.delivered}</span> entregues</span>
-                    <span><span className="text-teal">{c.read}</span> lidas</span>
                   </div>
                 )}
                 {c.when && <span className="font-mono text-[10px] text-sky-300">{c.when}</span>}
@@ -230,7 +229,6 @@ export default function CampaignsDemo() {
                       <div className="mt-3 grid grid-cols-3 gap-2 font-mono text-[10px] text-steel">
                         <div><Counter to={audience.count} className="block text-base font-bold text-white" />enviadas</div>
                         <div><Counter to={Math.round(audience.count * 0.94)} className="block text-base font-bold text-teal" />entregues</div>
-                        <div><Counter to={Math.round(audience.count * 0.73)} className="block text-base font-bold text-teal" />lidas</div>
                       </div>
                     </motion.div>
                   )}
@@ -238,7 +236,7 @@ export default function CampaignsDemo() {
               </div>
             </div>
             <p className="mt-4 flex items-center gap-2 font-mono text-[10px] text-steel/60">
-              <PencilLine className="h-3 w-3" /> Simulação com dados fictícios — nenhuma mensagem real é enviada.
+              <PencilLine className="h-3 w-3" /> Simulação com dados fictícios - nenhuma mensagem real é enviada.
             </p>
           </div>
         </div>

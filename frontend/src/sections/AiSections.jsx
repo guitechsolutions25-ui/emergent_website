@@ -40,7 +40,7 @@ export function RagSection() {
           <SectionHead
             chapter={["03", "Entender"]}
             title={<>A IA que conhece o <span className="text-teal">seu negócio</span>.</>}
-            sub="A Luna não inventa respostas. Ela busca no conhecimento real da sua empresa — documentos, site e arquivos — antes de responder qualquer cliente."
+            sub="A Luna não inventa respostas. Ela busca no conhecimento real da sua empresa - documentos, site e arquivos - antes de responder qualquer cliente."
           />
           <Reveal delay={0.2}>
             <div className="mt-8 flex flex-wrap gap-2" data-testid="rag-sources">
@@ -163,7 +163,7 @@ export function AgentSection() {
             <SectionHead
               chapter={["04", "Agir"]}
               title={<>Quando responder não é suficiente, <span className="text-teal">Luna age</span>.</>}
-              sub="A Luna é um agente autônomo: ela decide qual ferramenta usar, executa a ação no sistema certo e só então confirma com o cliente. Não é um fluxo engessado — é raciocínio com ferramentas."
+              sub="A Luna é um agente autônomo: ela decide qual ferramenta usar, executa a ação no sistema certo e só então confirma com o cliente. Não é um fluxo engessado - é raciocínio com ferramentas."
             />
             <Reveal delay={0.2}>
               <div className="mt-8 flex flex-wrap gap-2" data-testid="agent-tools">
@@ -188,7 +188,7 @@ export function AgentSection() {
 /* ---------------- OMNI ---------------- */
 
 const omniCards = [
-  { icon: MessageSquare, label: "Texto", desc: "Mensagens naturais, gírias e abreviações — a Luna entende intenção, não palavras-chave." },
+  { icon: MessageSquare, label: "Texto", desc: "Mensagens naturais, gírias e abreviações - a Luna entende intenção, não palavras-chave." },
   { icon: Mic, label: "Voz", desc: "Áudios transcritos com Whisper e respondidos em segundos, como se fossem texto.", voice: true },
   { icon: ImageIcon, label: "Imagem", desc: "Fotos de produtos, comprovantes e prints interpretados por IA com visão." },
   { icon: FileText, label: "Documento", desc: "PDFs e arquivos lidos e compreendidos dentro do contexto da conversa." },
@@ -200,7 +200,7 @@ export function OmniSection() {
       <SectionHead
         align="center"
         title={<>Seus clientes falam <span className="text-teal">como quiserem</span>.</>}
-        sub="Texto, áudio, imagem ou documento — a Luna entende, raciocina sobre o conteúdo e responde com o contexto da conversa."
+        sub="Texto, áudio, imagem ou documento - a Luna entende, raciocina sobre o conteúdo e responde com o contexto da conversa."
       />
       <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {omniCards.map((c, i) => (
