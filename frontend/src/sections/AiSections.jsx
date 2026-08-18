@@ -234,10 +234,10 @@ export function OmniSection() {
         ))}
       </div>
       <Reveal delay={0.3}>
-        <div className="mx-auto mt-8 flex max-w-md items-center justify-center gap-3 rounded-full border border-teal/25 bg-teal/[0.05] px-6 py-3" data-testid="omni-converge">
-          <span className="text-xs text-steel">tudo converge para</span>
-          <span className="flex items-center gap-2 font-display text-sm font-bold text-teal">
-            <BrainCircuit className="h-4 w-4" />
+        <div className="mx-auto mt-8 flex max-w-md flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-3xl border border-teal/25 bg-teal/[0.05] px-6 py-3 text-center" data-testid="omni-converge">
+          <span className="whitespace-nowrap text-xs text-steel">tudo converge para</span>
+          <span className="flex items-center gap-2 whitespace-nowrap font-display text-sm font-bold text-teal">
+            <BrainCircuit className="h-4 w-4 shrink-0" />
             Luna entende → raciocina → responde
           </span>
         </div>

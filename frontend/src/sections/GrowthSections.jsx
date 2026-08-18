@@ -154,7 +154,7 @@ export function PlatformTour() {
       />
 
       <div className="mt-14 grid gap-4 lg:grid-cols-[260px_1fr]">
-        <Reveal className="rounded-2xl border border-line bg-surface p-2.5">
+        <Reveal className="min-w-0 rounded-2xl border border-line bg-surface p-2.5">
           <div className="flex gap-1.5 overflow-x-auto lg:flex-col lg:overflow-visible" data-testid="tour-nav">
             {tourItems.map((t) => (
               <button
