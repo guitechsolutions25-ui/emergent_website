@@ -103,7 +103,7 @@ export default function Hero() {
             <SplineBoundary>
               <Suspense fallback={null}>
                 <Spline
-                  scene="https://prod.spline.design/loh2QfaTTmQ3M1kH/scene.splinecode"
+                  scene="https://prod.spline.design/G4NwmAwpjFy4Iuwx/scene.splinecode"
                   onLoad={(app) => { splineAppRef.current = app; }}
                 />
               </Suspense>
