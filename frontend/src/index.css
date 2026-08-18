@@ -156,10 +156,10 @@
  */
 .spline-hero-zoom {
     position: absolute;
-    width: calc(var(--spline-zoom-resolution, 5) * 100%);
-    height: calc(var(--spline-zoom-resolution, 5) * 100%);
-    left: var(--spline-shift-x, -213%);
-    top: var(--spline-shift-y, -238%);
+    width: calc(var(--spline-zoom-resolution, 5) );
+    height: calc(var(--spline-zoom-resolution, 5) );
+    left: var(--spline-shift-x);
+    top: var(--spline-shift-y);
     transform-origin: 0 0;
     transform: scale(var(--spline-zoom-display, 1.152));
 }
