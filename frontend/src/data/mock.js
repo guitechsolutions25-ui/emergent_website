@@ -256,7 +256,7 @@ export const plans = [
 export const tourItems = [
   { id: "mensagens", label: "Mensagens", desc: "Inbox ao vivo com conversas da Luna e da equipe, resumo por IA e filtros por status.", stat: "24/7 ativa", statLabel: "caixa de entrada" },
   { id: "clientes", label: "Clientes", desc: "CRM 360 com histórico completo, opt-in, tags e agendamentos de cada contato.", stat: "1.284", statLabel: "contatos ativos" },
-  { id: "marketing", label: "Marketing", desc: "Templates oficiais, campanhas em massa e agendadas, sempre com opt-in.", stat: "94%", statLabel: "taxa de leitura média" },
+  { id: "marketing", label: "Marketing", desc: "Templates oficiais, campanhas em massa e agendadas, sempre com opt-in.", stat: "94%", statLabel: "taxa de entrega média" },
   { id: "relatorios", label: "Relatórios", desc: "Volume, horários de pico, engajamento e análise de tópicos por IA.", stat: "30 dias", statLabel: "de visão consolidada" },
   { id: "integracoes", label: "Integrações", desc: "WhatsApp Cloud API, Google Calendar e Google Drive conectados nativamente.", stat: "3+", statLabel: "sistemas conectados" },
   { id: "performance", label: "Performance", desc: "Latência de resposta, custo de IA e saúde operacional da plataforma.", stat: "4s", statLabel: "resposta média da Luna" },
