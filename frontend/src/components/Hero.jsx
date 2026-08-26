@@ -1,26 +1,9 @@
-import { Component, Suspense, lazy, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowDown, CalendarCheck, Wifi } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
 
-const Spline = lazy(() => import("@splinetool/react-spline"));
-
 const EASE = [0.16, 1, 0.3, 1];
-
-// react-spline throws during render when the scene fails to load (e.g. a
-// network hiccup or an ad/privacy blocker cutting off prod.spline.design).
-// Without this boundary that throw propagates past Suspense and unmounts
-// the entire app, not just the hero visual, so a purely decorative asset
-// can take the whole site down. Swallow it and render nothing instead.
-class SplineBoundary extends Component {
-  state = { failed: false };
-  static getDerivedStateFromError() {
-    return { failed: true };
-  }
-  render() {
-    return this.state.failed ? null : this.props.children;
-  }
-}
 
 function MaskedLine({ children, delay }) {
   return (
@@ -35,23 +18,6 @@ function MaskedLine({ children, delay }) {
       </motion.span>
     </span>
   );
-}
-
-// Desktop-only: the orb is a decorative WebGL scene, not worth the load
-// weight and render cost on mobile. Reading matchMedia in the initializer
-// (rather than defaulting to true and correcting in an effect) means
-// Spline's lazy chunk is never requested on a mobile first render at all.
-function useIsDesktop() {
-  const [isDesktop, setIsDesktop] = useState(
-    () => typeof window !== "undefined" && window.matchMedia("(min-width: 1024px)").matches,
-  );
-  useEffect(() => {
-    const mql = window.matchMedia("(min-width: 1024px)");
-    const handler = (e) => setIsDesktop(e.matches);
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
-  return isDesktop;
 }
 
 function FloatCard({ className, delay, duration, children, testid }) {
@@ -76,61 +42,12 @@ function FloatCard({ className, delay, duration, children, testid }) {
 
 export default function Hero() {
   const ref = useRef(null);
-  const isDesktop = useIsDesktop();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const yContent = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const orbY = useTransform(scrollYProgress, [0, 1], [0, -90]);
-  const orbOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.15]);
-
-  const splineAppRef = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !isDesktop) return;
-    // The orb is a live WebGL render loop with no reason to keep running
-    // once scrolled out of view. Pause/resume it via Spline's own
-    // play()/stop() API rather than unmounting -- unmounting would
-    // retrigger Auto Zoom's fit calculation and the Start-event state
-    // transition, which previously caused the orb to reset/reframe each
-    // time it scrolled back in.
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const app = splineAppRef.current;
-        if (!app) return;
-        if (entry.isIntersecting) app.play();
-        else app.stop();
-      },
-      { rootMargin: "200px 0px" },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [isDesktop]);
 
   return (
     <section id="inicio" ref={ref} className="relative flex min-h-screen items-center overflow-hidden" data-testid="hero-section">
-      {isDesktop && (
-        <motion.div style={{ y: orbY, opacity: orbOpacity }} className="absolute inset-0 z-[5]">
-          <div
-            className="spline-hero"
-            style={{
-              WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 22%)",
-              maskImage: "linear-gradient(90deg, transparent 0%, black 22%)",
-              filter: "brightness(1.4) saturate(1.2)",
-            }}
-          >
-            <div className="spline-hero-zoom">
-              <SplineBoundary>
-                <Suspense fallback={null}>
-                  <Spline
-                    scene="https://prod.spline.design/G4NwmAwpjFy4Iuwx/scene.splinecode"
-                    onLoad={(app) => { splineAppRef.current = app; }}
-                  />
-                </Suspense>
-              </SplineBoundary>
-            </div>
-          </div>
-        </motion.div>
-      )}
       <div className="pointer-events-none absolute inset-0 bg-ink/55 lg:bg-[linear-gradient(90deg,#0D0D0F_0%,rgba(13,13,15,0.92)_30%,rgba(13,13,15,0.5)_50%,transparent_64%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ink to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/80 to-transparent" />

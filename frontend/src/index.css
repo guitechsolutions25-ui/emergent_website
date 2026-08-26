@@ -119,60 +119,6 @@
     }
 }
 
-/* Spline hero orb */
-.spline-hero {
-    position: absolute;
-    pointer-events: auto;
-}
-/*
- * Crops into a zoomed-in, shifted window of the Spline scene without
- * touching the scene itself (repositioning objects in Spline breaks
- * State-based animation targets, which are relative to base position).
- * --spline-shift-x / --spline-shift-y: offset as a % of the container,
- *   using  offset% = target% - centerFraction * zoom * 100
- *   where target% is where you want the orb's center to land in the
- *   visible area, and centerFraction is where it currently sits in the
- *   unzoomed scene (0.5, 0.5 since it's centered in Spline now).
- *
- * The zoom itself is split across two mechanisms instead of one:
- * --spline-zoom-resolution (width/height) is real size, so Spline's
- *   canvas -- which sizes itself to this div's *layout* box via
- *   ResizeObserver -- actually renders at that resolution. Costs GPU
- *   (render area grows with the square of this number), but stays sharp.
- * --spline-zoom-display (`transform: scale`) is free GPU compositing on
- *   top of that, but blurs the already-rendered frame if pushed too far.
- * Combined zoom = resolution x display. Splitting it 5 x 1.152 (=5.76
- * total, unchanged from before -- only this split moved) keeps the
- * canvas at 25x container area -- still under the ~33x the original bug
- * rendered at -- while the compositor only has to upscale by 1.152x,
- * about as close to native as this budget allows. Mobile now pauses the
- * whole render loop off-screen (see the IntersectionObserver in
- * Hero.jsx), which is where the room for this came from. Raise
- * -resolution for a sharper (costlier) result, -display for a cheaper
- * (blurrier) one. Note the orb itself is built from a cluster of small
- * discrete spheres (see the scene in Spline), so some graininess at this
- * size is the artwork, not a rendering artifact -- sharper rendering
- * won't smooth that out.
- */
-.spline-hero-zoom {
-    position: absolute;
-    width: calc(var(--spline-zoom-resolution, 5) );
-    height: calc(var(--spline-zoom-resolution, 5) );
-    left: var(--spline-shift-x);
-    top: var(--spline-shift-y);
-    transform-origin: 0 0;
-    transform: scale(var(--spline-zoom-display, 1.152));
-}
-/* No mobile breakpoint here: Hero.jsx doesn't mount .spline-hero at all
- * below 1024px (the orb is desktop-only -- not worth the load/render
- * cost on mobile), so there's nothing to size for that range. */
-@media (min-width: 1024px) {
-    .spline-hero {
-        inset: 0;
-        clip-path: inset(0 0 0 56%);
-    }
-}
-
 /* React Flow overrides */
 .react-flow {
     background: transparent;
