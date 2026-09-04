@@ -8,7 +8,7 @@ import Showcase from "@/components/showcase/Showcase";
 import { RagSection, AgentSection, OmniSection } from "@/sections/AiSections";
 import { SchedulingSection, CrmSection, HandoffSection } from "@/sections/ProductSections";
 import { MarketingSection, AnalyticsSection, IntegrationsSection, PlatformTour } from "@/sections/GrowthSections";
-import { PricingSection, FinalCta, Footer } from "@/sections/Closing";
+import { FreeTrialSection, FinalCta, Footer } from "@/sections/Closing";
 
 export default function App() {
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function App() {
         <AnalyticsSection />
         <IntegrationsSection />
         <PlatformTour />
-        <PricingSection />
+        <FreeTrialSection />
         <FinalCta />
       </main>
       <Footer />

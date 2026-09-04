@@ -8,7 +8,7 @@ const links = [
   { label: "Demonstração", href: "#demo" },
   { label: "Agendamento", href: "#agendamento" },
   { label: "Marketing", href: "#marketing" },
-  { label: "Planos", href: "#planos" },
+  { label: "Comece grátis", href: "#comece-gratis" },
 ];
 
 export function Logo({ compact = false }) {

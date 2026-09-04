@@ -226,31 +226,11 @@ export const marketingSteps = [
   { label: "Acompanhar", desc: "Enviadas e entregues em tempo real, com log completo." },
 ];
 
-export const plans = [
-  {
-    name: "Start",
-    price: "R$ 195",
-    period: "/mês",
-    desc: "Automação para começar a escalar o atendimento.",
-    features: ["Assistente respondendo os seus clientes com o conhecimento do seu negócio, 24 horas por dia", "Entende imagens, áudios e arquivos","Atendimento humano quando necessário"],
-    highlight: false,
-  },
-  {
-    name: "Silver",
-    price: "R$ 350",
-    period: "/mês",
-    desc: "Inteligência e gestão para operações em crescimento.",
-    features: ["Módulo de marketing com envio de mensagens personalizadas", "Entenda a sua demanda com relatórios em tempo real", "CRM com histórico de interações de clientes","Gestão automatizada de agendamento através do Google Agenda"],
-    highlight: true,
-  },
-  {
-    name: "Enterprise",
-    price: "R$ 520",
-    period: "/mês",
-    desc: "Experiência conversacional premium em escala.",
-    features: ["Atendimento sem menus", "Experiência natual do início ao fim"],
-    highlight: false,
-  },
+export const trialHighlights = [
+  "Acesso completo à plataforma, sem funções bloqueadas",
+  "Sem cartão de crédito para começar",
+  "Suporte direto da equipe durante o teste",
+  "Cancele quando quiser, sem multas",
 ];
 
 export const tourItems = [

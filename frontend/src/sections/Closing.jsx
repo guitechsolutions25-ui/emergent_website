@@ -1,63 +1,54 @@
 import { Check, ArrowUpRight, Mail } from "lucide-react";
 import { SectionHead, Reveal } from "@/components/Reveal";
-import { plans } from "@/data/mock";
+import { trialHighlights } from "@/data/mock";
 import { Logo } from "@/components/Nav";
 import { scrollToSection } from "@/lib/scroll";
 
-export function PricingSection() {
+export function FreeTrialSection() {
   return (
-    <section id="planos" className="mx-auto max-w-7xl px-5 py-28 lg:px-8" data-testid="pricing-section">
+    <section id="comece-gratis" className="mx-auto max-w-7xl px-5 py-28 lg:px-8" data-testid="free-trial-section">
       <SectionHead
         align="center"
-        title={<>Planos para cada <span className="text-teal">estágio</span>.</>}
-        sub="Comece pela automação e evolua para a inteligência completa. Sem taxa de setup escondida."
+        title={<>Comece <span className="text-teal">grátis</span>.</>}
+        sub="Sem planos fechados nem letras miúdas: use a Kromera na sua operação real antes de decidir qualquer coisa."
       />
-      <div className="mt-14 grid gap-5 lg:grid-cols-3" data-testid="pricing-grid">
-        {plans.map((p, i) => (
-          <Reveal key={p.name} delay={i * 0.1}>
-            <div
-              className={`relative flex h-full flex-col rounded-2xl border p-7 transition-colors duration-300 lg:p-8 ${
-                p.highlight
-                  ? "border-teal/50 bg-teal/[0.05] shadow-[0_0_50px_rgba(0,217,165,0.12)] lg:-translate-y-3"
-                  : "border-line bg-surface hover:border-white/20"
-              }`}
-              data-testid={`plan-card-${p.name.toLowerCase()}`}
-            >
-              {p.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-teal px-4 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-ink">
-                  Mais escolhido
-                </span>
-              )}
-              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-steel">{p.name}</p>
-              <div className="mt-4 flex items-baseline gap-1.5">
-                <span className={`font-display text-4xl font-extrabold tracking-tight ${p.highlight ? "text-teal" : "text-white"}`}>{p.price}</span>
-                <span className="text-sm text-steel">{p.period}</span>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-steel">{p.desc}</p>
-              <ul className="mt-7 flex-1 space-y-3">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-white/80">
-                    <Check className={`mt-0.5 h-4 w-4 shrink-0 ${p.highlight ? "text-teal" : "text-teal/70"}`} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="#contato"
-                data-testid={`plan-cta-${p.name.toLowerCase()}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection("#contato"); }}
-                className={`mt-8 rounded-full py-3 text-center font-display text-sm font-bold transition-all duration-300 ${
-                  p.highlight
-                    ? "bg-teal text-ink hover:bg-teal-soft hover:shadow-[0_0_30px_rgba(0,217,165,0.4)]"
-                    : "border border-line text-white hover:border-teal/40 hover:text-teal"
-                }`}
-              >
-                Começar com {p.name}
-              </a>
-            </div>
-          </Reveal>
-        ))}
-      </div>
+      <Reveal delay={0.15}>
+        <div
+          className="relative mx-auto mt-14 max-w-3xl overflow-hidden rounded-3xl border border-teal/40 bg-teal/[0.05] p-9 text-center shadow-[0_0_60px_rgba(0,217,165,0.14)] lg:p-14"
+          data-testid="free-trial-card"
+        >
+          <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-teal px-4 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-ink">
+            Sem cartão de crédito
+          </span>
+          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-teal">Oferta de lançamento</p>
+          <h3 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+            Comece grátis
+          </h3>
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-steel md:text-lg">
+            Teste por 60 dias grátis, sem cartão de crédito e sem compromisso. Coloque a Luna para atender seus clientes de verdade e veja, com dados, o quanto ela resolve.
+          </p>
+          <ul className="mx-auto mt-9 grid max-w-lg gap-3 text-left sm:grid-cols-2">
+            {trialHighlights.map((h) => (
+              <li key={h} className="flex items-start gap-2.5 text-sm text-white/80">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+                {h}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#contato"
+            data-testid="free-trial-cta"
+            onClick={(e) => { e.preventDefault(); scrollToSection("#contato"); }}
+            className="group mt-10 inline-flex items-center gap-2 rounded-full bg-teal px-8 py-3.5 font-display text-sm font-bold text-ink transition-all duration-300 hover:bg-teal-soft hover:shadow-[0_0_40px_rgba(0,217,165,0.4)]"
+          >
+            Quero testar grátis
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+          <p className="mx-auto mt-6 max-w-md font-mono text-[11px] leading-relaxed text-steel/70">
+            Ao fim do teste, montamos juntos um plano sob medida para o volume real do seu atendimento.
+          </p>
+        </div>
+      </Reveal>
     </section>
   );
 }
