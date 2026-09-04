@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, LogIn } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
 
 const links = [
@@ -9,27 +10,62 @@ const links = [
   { label: "Agendamento", href: "#agendamento" },
   { label: "Marketing", href: "#marketing" },
   { label: "Comece grátis", href: "#comece-gratis" },
+  { label: "Termos e Privacidade", href: "/termos-e-privacidade", route: true },
 ];
 
+const APP_URL = "https://app.kromera.com/";
+
+// In-page anchors (e.g. #plataforma) only exist on the home page. From any
+// other route (the legal page), a click needs to navigate home first and
+// let HomePage's own hash effect scroll once it's mounted.
+function useGoTo() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  return (href) => (e) => {
+    e.preventDefault();
+    if (location.pathname === "/") scrollToSection(href);
+    else navigate(`/${href}`);
+  };
+}
+
 export function Logo({ compact = false }) {
+  const goTo = useGoTo();
   return (
-    <a href="#inicio" data-testid="logo-link" className="group flex items-center gap-2.5" onClick={(e) => go(e, "#inicio")}>
+    <Link to="/#inicio" data-testid="logo-link" className="group flex items-center gap-2.5" onClick={goTo("#inicio")}>
       <span className="grid h-8 w-8 place-items-center rounded-lg bg-teal font-display text-base font-extrabold text-ink transition-transform duration-300 group-hover:rotate-6">
         K
       </span>
       {!compact && <span className="font-display text-lg font-bold tracking-tight text-white">Kromera</span>}
-    </a>
+    </Link>
   );
 }
 
-function go(e, href) {
-  e.preventDefault();
-  scrollToSection(href);
+function NavLink({ link, className, onNavigate }) {
+  const goTo = useGoTo();
+  const testid = `nav-link-${link.href.replace(/^[#/]/, "")}`;
+  if (link.route) {
+    return (
+      <Link to={link.href} data-testid={testid} onClick={onNavigate} className={className}>
+        {link.label}
+      </Link>
+    );
+  }
+  return (
+    <a
+      href={`/${link.href}`}
+      data-testid={testid}
+      onClick={(e) => { goTo(link.href)(e); onNavigate?.(); }}
+      className={className}
+    >
+      {link.label}
+    </a>
+  );
 }
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const goTo = useGoTo();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -47,24 +83,24 @@ export default function Nav() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
         <Logo />
-        <nav className="hidden items-center gap-8 lg:flex" data-testid="nav-links">
+        <nav className="hidden items-center gap-6 lg:flex" data-testid="nav-links">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              data-testid={`nav-link-${l.href.slice(1)}`}
-              onClick={(e) => go(e, l.href)}
-              className="text-sm text-steel transition-colors duration-300 hover:text-white"
-            >
-              {l.label}
-            </a>
+            <NavLink key={l.href} link={l} className="text-sm text-steel transition-colors duration-300 hover:text-white" />
           ))}
         </nav>
         <div className="flex items-center gap-3">
           <a
-            href="#contato"
+            href={APP_URL}
+            data-testid="nav-login-button"
+            className="group hidden items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm font-semibold text-white transition-colors duration-300 hover:border-teal/40 hover:text-teal sm:flex"
+          >
+            <LogIn className="h-3.5 w-3.5" />
+            Login
+          </a>
+          <a
+            href="/#contato"
             data-testid="nav-cta-button"
-            onClick={(e) => go(e, "#contato")}
+            onClick={goTo("#contato")}
             className="group hidden items-center gap-1.5 rounded-full bg-teal px-5 py-2 text-sm font-semibold text-ink transition-all duration-300 hover:bg-teal-soft hover:shadow-[0_0_28px_rgba(0,217,165,0.35)] sm:flex"
           >
             Agendar uma prévia
@@ -92,24 +128,24 @@ export default function Nav() {
           >
             <div className="flex flex-col gap-1 px-5 py-4">
               {links.map((l) => (
-                <a
+                <NavLink
                   key={l.href}
-                  href={l.href}
-                  onClick={(e) => {
-                    go(e, l.href);
-                    setOpen(false);
-                  }}
+                  link={l}
+                  onNavigate={() => setOpen(false)}
                   className="rounded-lg px-3 py-2.5 text-sm text-steel transition-colors hover:bg-white/5 hover:text-white"
-                >
-                  {l.label}
-                </a>
+                />
               ))}
               <a
-                href="#contato"
-                onClick={(e) => {
-                  go(e, "#contato");
-                  setOpen(false);
-                }}
+                href={APP_URL}
+                onClick={() => setOpen(false)}
+                className="mt-2 flex items-center justify-center gap-1.5 rounded-full border border-line px-5 py-2.5 text-center text-sm font-semibold text-white"
+              >
+                <LogIn className="h-3.5 w-3.5" />
+                Login
+              </a>
+              <a
+                href="/#contato"
+                onClick={(e) => { goTo("#contato")(e); setOpen(false); }}
                 className="mt-2 rounded-full bg-teal px-5 py-2.5 text-center text-sm font-semibold text-ink"
               >
                 Agendar uma prévia
