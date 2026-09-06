@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Check, ArrowUpRight, Mail } from "lucide-react";
+import { Check, ArrowUpRight, Mail, Instagram } from "lucide-react";
 import { SectionHead, Reveal } from "@/components/Reveal";
 import { trialHighlights } from "@/data/mock";
 import { Logo } from "@/components/Nav";
@@ -104,6 +104,16 @@ export function Footer() {
         <Logo />
         <p className="font-mono text-[11px] text-steel/60">Atender → Entender → Agir → Organizar → Analisar</p>
         <div className="flex items-center gap-5">
+          <a
+            href="https://www.instagram.com/kromerachat/"
+            target="_blank"
+            rel="noopener noreferrer me"
+            data-testid="footer-instagram-link"
+            aria-label="Kromera no Instagram"
+            className="text-steel/60 transition-colors hover:text-teal"
+          >
+            <Instagram className="h-4 w-4" />
+          </a>
           <Link to="/termos-e-privacidade" data-testid="footer-legal-link" className="text-xs text-steel/60 transition-colors hover:text-teal">
             Termos e Privacidade
           </Link>
