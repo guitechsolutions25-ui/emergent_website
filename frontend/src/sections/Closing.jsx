@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Check, ArrowUpRight, Mail } from "lucide-react";
 import { SectionHead, Reveal } from "@/components/Reveal";
 import { trialHighlights } from "@/data/mock";
@@ -14,7 +15,7 @@ export function FreeTrialSection() {
       />
       <Reveal delay={0.15}>
         <div
-          className="relative mx-auto mt-14 max-w-3xl overflow-hidden rounded-3xl border border-teal/40 bg-teal/[0.05] p-9 text-center shadow-[0_0_60px_rgba(0,217,165,0.14)] lg:p-14"
+          className="relative mx-auto mt-14 max-w-3xl rounded-3xl border border-teal/40 bg-teal/[0.05] p-9 text-center shadow-[0_0_60px_rgba(0,217,165,0.14)] lg:p-14"
           data-testid="free-trial-card"
         >
           <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-teal px-4 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-ink">
@@ -102,7 +103,12 @@ export function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-5 sm:flex-row lg:px-8">
         <Logo />
         <p className="font-mono text-[11px] text-steel/60">Atender → Entender → Agir → Organizar → Analisar</p>
-        <p className="text-xs text-steel/60">© 2026 Kromera. Todos os direitos reservados.</p>
+        <div className="flex items-center gap-5">
+          <Link to="/termos-e-privacidade" data-testid="footer-legal-link" className="text-xs text-steel/60 transition-colors hover:text-teal">
+            Termos e Privacidade
+          </Link>
+          <p className="text-xs text-steel/60">© 2026 Kromera. Todos os direitos reservados.</p>
+        </div>
       </div>
     </footer>
   );

@@ -1,14 +1,10 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "@/components/Nav";
-import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import Positioning from "@/components/Positioning";
-import Showcase from "@/components/showcase/Showcase";
-import { RagSection, AgentSection, OmniSection } from "@/sections/AiSections";
-import { SchedulingSection, CrmSection, HandoffSection } from "@/sections/ProductSections";
-import { MarketingSection, AnalyticsSection, IntegrationsSection, PlatformTour } from "@/sections/GrowthSections";
-import { FreeTrialSection, FinalCta, Footer } from "@/sections/Closing";
+import { Footer } from "@/sections/Closing";
+import HomePage from "@/pages/HomePage";
+import LegalPage from "@/pages/LegalPage";
 
 export default function App() {
   useEffect(() => {
@@ -21,27 +17,17 @@ export default function App() {
   }, []);
 
   return (
-    <div className="grain min-h-screen bg-ink text-foreground">
-      <Nav />
-      <main>
-        <Hero />
-        <Marquee />
-        <Positioning />
-        <Showcase />
-        <RagSection />
-        <AgentSection />
-        <OmniSection />
-        <SchedulingSection />
-        <CrmSection />
-        <HandoffSection />
-        <MarketingSection />
-        <AnalyticsSection />
-        <IntegrationsSection />
-        <PlatformTour />
-        <FreeTrialSection />
-        <FinalCta />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="grain min-h-screen bg-ink text-foreground">
+        <Nav />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/termos-e-privacidade" element={<LegalPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
