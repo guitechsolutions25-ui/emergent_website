@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, LogIn } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
+import logoImg from "@/assets/logo.png";
 
 const links = [
   { label: "Plataforma", href: "#plataforma" },
@@ -32,9 +33,11 @@ export function Logo({ compact = false }) {
   const goTo = useGoTo();
   return (
     <Link to="/#inicio" data-testid="logo-link" className="group flex items-center gap-2.5" onClick={goTo("#inicio")}>
-      <span className="grid h-8 w-8 place-items-center rounded-lg bg-teal font-display text-base font-extrabold text-ink transition-transform duration-300 group-hover:rotate-6">
-        K
-      </span>
+      <img
+        src={logoImg}
+        alt="Kromera"
+        className="h-8 w-8 shrink-0 transition-transform duration-300 group-hover:rotate-6"
+      />
       {!compact && <span className="font-display text-lg font-bold tracking-tight text-white">Kromera</span>}
     </Link>
   );
